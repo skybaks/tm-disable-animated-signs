@@ -1,4 +1,7 @@
 
+[Setting category="General" name="Automatically disable sign animation" description="If this setting is turned off you can still disable sign animations on demand from the Plugins menu"]
+bool Settings_AutoDisable = false;
+
 void StopFidAnimation(CSystemFid@ fid)
 {
     if (fid !is null && fid.Nod !is null)
@@ -38,8 +41,33 @@ void StopSignsInGame()
 
 void RenderMenu()
 {
-    if (UI::MenuItem("\\$f00" + Icons::Ban + " \\$zDisable Animated Signs"))
+    if (UI::MenuItem("\\$f00" + Icons::Ban + " \\$zDisable Animated Signs", enabled: GetApp().CurrentPlayground !is null))
     {
         StopSignsInGame();
+    }
+}
+
+void Main()
+{
+    CMwNod@ prevPlayground = null;
+
+    while (true)
+    {
+        sleep(1000);
+
+        if (Settings_AutoDisable)
+        {
+            CMwNod@ currPlayground = GetApp().CurrentPlayground;
+
+            if (currPlayground !is prevPlayground && currPlayground !is null)
+            {
+                StopSignsInGame();
+            }
+            @prevPlayground = currPlayground;
+        }
+        else
+        {
+            @prevPlayground = null;
+        }
     }
 }
