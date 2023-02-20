@@ -37,6 +37,7 @@ void StopSignsInGame()
     TraverseFidsAndStopAnimation(Fids::GetUserFolder("Media"));
     TraverseFidsAndStopAnimation(Fids::GetGameFolder("GameData/Skins"));
     TraverseFidsAndStopAnimation(Fids::GetGameFolder("GameData/Media"));
+    TraverseFidsAndStopAnimation(Fids::GetFakeFolder("MemoryTemp/PackDescContents/_shared__Cache"));
 }
 
 void RenderMenu()
