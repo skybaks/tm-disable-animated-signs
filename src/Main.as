@@ -38,6 +38,7 @@ void StopSignsInGame()
     TraverseFidsAndStopAnimation(Fids::GetGameFolder("GameData/Skins"));
     TraverseFidsAndStopAnimation(Fids::GetGameFolder("GameData/Media"));
     TraverseFidsAndStopAnimation(Fids::GetFakeFolder("MemoryTemp/PackDescContents/_shared__Cache"));
+    TraverseFidsAndStopAnimation(Fids::GetFakeFolder("MemoryTemp/PackDescContents/_user__Skins_Stadium_Mod"));
 }
 
 void RenderMenu()
