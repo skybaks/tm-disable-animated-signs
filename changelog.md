@@ -1,5 +1,6 @@
 # 1.1
-* Disable animations from mods
+* Disable animations in texture mods
+* Refactor usage of class CSystemFids - No change to functionaity
 
 
 # 1.0

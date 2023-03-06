@@ -14,14 +14,13 @@ void StopFidAnimation(CSystemFid@ fid)
     }
 }
 
-void TraverseFidsAndStopAnimation(CSystemFids@ fids)
+void TraverseFidsAndStopAnimation(CSystemFidsFolder@ fidsFolder)
 {
-    CSystemFidsFolder@ fidsFolder = cast<CSystemFidsFolder>(fids);
     if (fidsFolder !is null)
     {
         for (uint i = 0; i < fidsFolder.Trees.Length; i++)
         {
-            TraverseFidsAndStopAnimation(fidsFolder.Trees[i]);
+            TraverseFidsAndStopAnimation(cast<CSystemFidsFolder>(fidsFolder.Trees[i]));
         }
         for (uint i = 0; i < fidsFolder.Leaves.Length; i++)
         {
@@ -32,13 +31,13 @@ void TraverseFidsAndStopAnimation(CSystemFids@ fids)
 
 void StopSignsInGame()
 {
-    TraverseFidsAndStopAnimation(Fids::GetProgramDataFolder("Cache"));
-    TraverseFidsAndStopAnimation(Fids::GetUserFolder("Skins"));
-    TraverseFidsAndStopAnimation(Fids::GetUserFolder("Media"));
-    TraverseFidsAndStopAnimation(Fids::GetGameFolder("GameData/Skins"));
-    TraverseFidsAndStopAnimation(Fids::GetGameFolder("GameData/Media"));
-    TraverseFidsAndStopAnimation(Fids::GetFakeFolder("MemoryTemp/PackDescContents/_shared__Cache"));
-    TraverseFidsAndStopAnimation(Fids::GetFakeFolder("MemoryTemp/PackDescContents/_user__Skins_Stadium_Mod"));
+    TraverseFidsAndStopAnimation(cast<CSystemFidsFolder>(Fids::GetProgramDataFolder("Cache")));
+    TraverseFidsAndStopAnimation(cast<CSystemFidsFolder>(Fids::GetUserFolder("Skins")));
+    TraverseFidsAndStopAnimation(cast<CSystemFidsFolder>(Fids::GetUserFolder("Media")));
+    TraverseFidsAndStopAnimation(cast<CSystemFidsFolder>(Fids::GetGameFolder("GameData/Skins")));
+    TraverseFidsAndStopAnimation(cast<CSystemFidsFolder>(Fids::GetGameFolder("GameData/Media")));
+    TraverseFidsAndStopAnimation(cast<CSystemFidsFolder>(Fids::GetFakeFolder("MemoryTemp/PackDescContents/_shared__Cache")));
+    TraverseFidsAndStopAnimation(cast<CSystemFidsFolder>(Fids::GetFakeFolder("MemoryTemp/PackDescContents/_user__Skins_Stadium_Mod")));
 }
 
 void RenderMenu()
