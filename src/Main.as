@@ -2,7 +2,7 @@
 [Setting category="General" name="Automatically disable sign animation" description="If this setting is turned off you can still disable sign animations on demand from the Plugins menu"]
 bool Settings_AutoDisable = false;
 
-void StopFidAnimation(CSystemFid@ fid)
+void StopFidAnimation(CSystemFidFile@ fid)
 {
     if (fid !is null && fid.Nod !is null)
     {
